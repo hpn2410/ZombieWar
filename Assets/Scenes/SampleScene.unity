@@ -1974,7 +1974,7 @@ GameObject:
   - component: {fileID: 179964018}
   - component: {fileID: 179964017}
   - component: {fileID: 179964016}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2406,7 +2406,7 @@ GameObject:
   - component: {fileID: 200717939}
   - component: {fileID: 200717938}
   - component: {fileID: 200717937}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2951,7 +2951,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6bea03a7115c5d748b18a7573d0d4d2b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1060941473}
   m_SourcePrefab: {fileID: 100100000, guid: 6bea03a7115c5d748b18a7573d0d4d2b, type: 3}
 --- !u!4 &258170569 stripped
 Transform:
@@ -2970,6 +2973,7 @@ GameObject:
   - component: {fileID: 260372760}
   - component: {fileID: 260372759}
   - component: {fileID: 260372758}
+  - component: {fileID: 260372762}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3006,12 +3010,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -3060,6 +3064,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &260372762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260372757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90462a04c8c828d40824f6894a0e61ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_canvasScaler: {fileID: 260372759}
 --- !u!1 &260705090 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4081489707648145027, guid: a2bc3c6d184ef5340b2c6b061e93d1ae, type: 3}
@@ -3917,7 +3934,7 @@ Camera:
   m_GameObject: {fileID: 330585543}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -6047,6 +6064,10 @@ PrefabInstance:
       value: T_Pose_Swat
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 3ae8ee1b09f0da34d87bb11a62431782, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 1f09afe1265e7ef49be29ae8c45cb10b, type: 3}
+    - target: {fileID: 5866666021909216657, guid: 3ae8ee1b09f0da34d87bb11a62431782, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 14abd6010da9b654396da622667ac87c, type: 2}
@@ -6072,6 +6093,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ae8ee1b09f0da34d87bb11a62431782, type: 3}
       insertIndex: -1
       addedObject: {fileID: 521216977}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ae8ee1b09f0da34d87bb11a62431782, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 521216983}
   m_SourcePrefab: {fileID: 100100000, guid: 3ae8ee1b09f0da34d87bb11a62431782, type: 3}
 --- !u!4 &521216975 stripped
 Transform:
@@ -6197,11 +6221,44 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 59cd19dd-c528-416f-8de2-d3ec1b493a3a
     m_ActionName: PlayerMovement/Input
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 521216983}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: InputFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6e32dc1c-78eb-46e2-8f36-31cc01f13cd3
+    m_ActionName: PlayerMovement/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerMovement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &521216983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521216976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3f97e9966f3d947b8d561c334f7b72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentWeapon: {fileID: 1060941473}
+  mainCamera: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &528581864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7755,6 +7812,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: T_Pose_Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 57f2e1da1f6a04e4d8c3229fe45dd857, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 57f2e1da1f6a04e4d8c3229fe45dd857, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 5f57c8e9f69a8d3409eb78e4d2ad49d1, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8401,7 +8466,7 @@ GameObject:
   - component: {fileID: 717852690}
   - component: {fileID: 717852689}
   - component: {fileID: 717852688}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9651,7 +9716,7 @@ GameObject:
   - component: {fileID: 808752391}
   - component: {fileID: 808752390}
   - component: {fileID: 808752389}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13658,6 +13723,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.298581, y: 0.969056, z: 2.534088}
   m_Center: {x: -0.51564467, y: 0.46952343, z: -0.7542778}
+--- !u!1 &1060941470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 6bea03a7115c5d748b18a7573d0d4d2b, type: 3}
+  m_PrefabInstance: {fileID: 258170568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1060941473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1060941470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db8897c28b49a24eb3d3c6677484ecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireRate: 5
 --- !u!1 &1065289162 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1757073144890816982, guid: 0b1830e17e2032847911da5328b4cf6c, type: 3}
@@ -14309,7 +14392,7 @@ GameObject:
   - component: {fileID: 1115807295}
   - component: {fileID: 1115807294}
   - component: {fileID: 1115807293}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16360,7 +16443,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 250, y: 250}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1266752412
@@ -16385,7 +16468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovementRange: 50
   m_DynamicOriginRange: 100
-  m_ControlPath: <Gamepad>/leftStick
+  m_ControlPath: <Joystick>/stick
   m_Behaviour: 0
   m_UseIsolatedInputActions: 0
   m_PointerDownAction:
@@ -16954,7 +17037,7 @@ GameObject:
   - component: {fileID: 1276933319}
   - component: {fileID: 1276933318}
   - component: {fileID: 1276933317}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24256,7 +24339,7 @@ GameObject:
   - component: {fileID: 1724338702}
   - component: {fileID: 1724338701}
   - component: {fileID: 1724338700}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26440,7 +26523,7 @@ GameObject:
   - component: {fileID: 1883628984}
   - component: {fileID: 1883628983}
   - component: {fileID: 1883628982}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30105,5 +30188,5 @@ SceneRoots:
   - {fileID: 404601257}
   - {fileID: 260372761}
   - {fileID: 1787903302}
-  - {fileID: 521216974}
   - {fileID: 660362983}
+  - {fileID: 521216974}

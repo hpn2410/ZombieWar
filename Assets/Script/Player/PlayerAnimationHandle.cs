@@ -2,46 +2,131 @@ using UnityEngine;
 
 public class PlayerAnimationHandle : MonoBehaviour
 {
-    Animator playerAnimator;
-
     public static PlayerAnimationHandle Instance { get; private set; }
+
+    private Animator playerAnimator;
+
+    private int rifleFiringLayer;
+    private int pistolFiringLayer;
+
+    private const string IsRun = "IsRun";
 
     private void Awake()
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this);
+            Destroy(gameObject);
+            return;
         }
-        else
-        {
-            Instance = this;
-        }
-    }
 
-    private void Start()
-    {
+        Instance = this;
+
         playerAnimator = GetComponent<Animator>();
+
+        if (playerAnimator == null)
+        {
+            Debug.LogError("PlayerAnimationHandle: Animator not found!");
+            return;
+        }
+
+        rifleFiringLayer = playerAnimator.GetLayerIndex("RifleFiring");
+        pistolFiringLayer = playerAnimator.GetLayerIndex("PistolFiring");
+
+        if (rifleFiringLayer == -1)
+        {
+            Debug.LogError("PlayerAnimationHandle: RifleFiring layer not found!");
+        }
+
+        if (pistolFiringLayer == -1)
+        {
+            Debug.LogError("PlayerAnimationHandle: PistolFiring layer not found!");
+        }
     }
 
     public void PlayerRun()
     {
-        playerAnimator.SetBool("IsRun", true);
+        if (playerAnimator == null)
+            return;
+
+        playerAnimator.SetBool(IsRun, true);
     }
 
     public void PlayerIdle()
     {
-        playerAnimator.SetBool("IsRun", false);
+        if (playerAnimator == null)
+            return;
+
+        playerAnimator.SetBool(IsRun, false);
     }
 
-    public void ActiveRifeFire()
+    public void ActiveRifleFire()
     {
-        int layerIndex = playerAnimator.GetLayerIndex("RifleFiring");
-        playerAnimator.SetLayerWeight(1, 1f);
+        if (playerAnimator == null || rifleFiringLayer == -1)
+            return;
+
+        playerAnimator.SetLayerWeight(rifleFiringLayer, 1f);
     }
 
-    public void DeactivateRifeFire()
+    public void DeactivateRifleFire()
     {
-        int layerIndex = playerAnimator.GetLayerIndex("RifleFiring");
-        playerAnimator.SetLayerWeight(1, 0f);
+        if (playerAnimator == null || rifleFiringLayer == -1)
+            return;
+
+        playerAnimator.SetLayerWeight(rifleFiringLayer, 0f);
+    }
+
+    public void ActivePistolFire()
+    {
+        if (playerAnimator == null || pistolFiringLayer == -1)
+            return;
+
+        playerAnimator.SetLayerWeight(pistolFiringLayer, 1f);
+    }
+
+    public void DeactivatePistolFire()
+    {
+        if (playerAnimator == null || pistolFiringLayer == -1)
+            return;
+
+        playerAnimator.SetLayerWeight(pistolFiringLayer, 0f);
+    }
+
+    public void SetRifleFireLayer(bool active)
+    {
+        if (playerAnimator == null || rifleFiringLayer == -1)
+            return;
+
+        playerAnimator.SetLayerWeight(
+            rifleFiringLayer,
+            active ? 1f : 0f
+        );
+    }
+
+    public void SetPistolFireLayer(bool active)
+    {
+        if (playerAnimator == null || pistolFiringLayer == -1)
+            return;
+
+        playerAnimator.SetLayerWeight(
+            pistolFiringLayer,
+            active ? 1f : 0f
+        );
+    }
+
+    public void SetFireLayer(bool isRifle, bool active)
+    {
+        if (playerAnimator == null)
+            return;
+
+        if (isRifle)
+        {
+            SetRifleFireLayer(active);
+            SetPistolFireLayer(false);
+        }
+        else
+        {
+            SetRifleFireLayer(false);
+            SetPistolFireLayer(active);
+        }
     }
 }
