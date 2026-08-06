@@ -3,7 +3,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerCombat : MonoBehaviour
 {
-    [SerializeField] private Weapon currentWeapon;
+    [SerializeField] private WeaponManager weaponManager;
+    [SerializeField] private PlayerAnimationHandle animationHandle;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask groundLayer;
 
@@ -13,8 +14,19 @@ public class PlayerCombat : MonoBehaviour
     private void Awake()
     {
         if (mainCamera == null)
-        {
             mainCamera = Camera.main;
+    }
+
+    private void Update()
+    {
+        if (!isFiring)
+            return;
+
+        Weapon weapon = weaponManager.CurrentWeapon;
+
+        if (weapon != null)
+        {
+            weapon.TryFire();
         }
     }
 
@@ -47,53 +59,51 @@ public class PlayerCombat : MonoBehaviour
 
         Ray ray = mainCamera.ScreenPointToRay(screenPosition);
 
-        if (Physics.Raycast(
-            ray,
-            out RaycastHit hit,
-            Mathf.Infinity,
-            groundLayer))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer))
         {
             Vector3 direction = hit.point - transform.position;
-
-            // Chỉ xoay trên mặt phẳng XZ
             direction.y = 0f;
 
-            if (direction.sqrMagnitude <= 0.001f)
+            if (direction.sqrMagnitude < 0.001f)
                 return;
-
-            direction.Normalize();
 
             transform.rotation = Quaternion.LookRotation(direction);
         }
     }
 
-    public void StartFire()
+    private void StartFire()
     {
-        if (currentWeapon == null)
+        Weapon weapon = weaponManager.CurrentWeapon;
+
+        if (weapon == null)
             return;
 
         isFiring = true;
-        currentWeapon.SetFireAnimation(true);
 
-        // Bắn ngay lập tức khi tap
-        currentWeapon.TryFire();
+        animationHandle.SetFireLayer(weapon.Type, true);
+
+        weapon.TryFire();
     }
 
-    public void StopFire()
+    private void StopFire()
     {
         isFiring = false;
 
-        if (currentWeapon != null)
-        {
-            currentWeapon.SetFireAnimation(false);
-        }
+        Weapon weapon = weaponManager.CurrentWeapon;
+
+        if (weapon == null)
+            return;
+
+        animationHandle.SetFireLayer(weapon.Type, false);
     }
 
-    private void Update()
+    public void OnSwitchWeaponClicked()
     {
-        if (isFiring && currentWeapon != null)
+        Weapon weapon = weaponManager.SwitchWeapon();
+
+        if (isFiring)
         {
-            currentWeapon.TryFire();
+            animationHandle.SetFireLayer(weapon.Type, true);
         }
     }
 }

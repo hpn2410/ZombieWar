@@ -59,37 +59,37 @@ public class PlayerAnimationHandle : MonoBehaviour
         playerAnimator.SetBool(IsRun, false);
     }
 
-    public void ActiveRifleFire()
-    {
-        if (playerAnimator == null || rifleFiringLayer == -1)
-            return;
+    //public void ActiveRifleFire()
+    //{
+    //    if (playerAnimator == null || rifleFiringLayer == -1)
+    //        return;
 
-        playerAnimator.SetLayerWeight(rifleFiringLayer, 1f);
-    }
+    //    playerAnimator.SetLayerWeight(rifleFiringLayer, 1f);
+    //}
 
-    public void DeactivateRifleFire()
-    {
-        if (playerAnimator == null || rifleFiringLayer == -1)
-            return;
+    //public void DeactivateRifleFire()
+    //{
+    //    if (playerAnimator == null || rifleFiringLayer == -1)
+    //        return;
 
-        playerAnimator.SetLayerWeight(rifleFiringLayer, 0f);
-    }
+    //    playerAnimator.SetLayerWeight(rifleFiringLayer, 0f);
+    //}
 
-    public void ActivePistolFire()
-    {
-        if (playerAnimator == null || pistolFiringLayer == -1)
-            return;
+    //public void ActivePistolFire()
+    //{
+    //    if (playerAnimator == null || pistolFiringLayer == -1)
+    //        return;
 
-        playerAnimator.SetLayerWeight(pistolFiringLayer, 1f);
-    }
+    //    playerAnimator.SetLayerWeight(pistolFiringLayer, 1f);
+    //}
 
-    public void DeactivatePistolFire()
-    {
-        if (playerAnimator == null || pistolFiringLayer == -1)
-            return;
+    //public void DeactivatePistolFire()
+    //{
+    //    if (playerAnimator == null || pistolFiringLayer == -1)
+    //        return;
 
-        playerAnimator.SetLayerWeight(pistolFiringLayer, 0f);
-    }
+    //    playerAnimator.SetLayerWeight(pistolFiringLayer, 0f);
+    //}
 
     public void SetRifleFireLayer(bool active)
     {
@@ -113,20 +113,20 @@ public class PlayerAnimationHandle : MonoBehaviour
         );
     }
 
-    public void SetFireLayer(bool isRifle, bool active)
+    public void SetFireLayer(WeaponType type, bool active)
     {
-        if (playerAnimator == null)
-            return;
+        SetRifleFireLayer(false);
+        SetPistolFireLayer(false);
 
-        if (isRifle)
+        switch (type)
         {
-            SetRifleFireLayer(active);
-            SetPistolFireLayer(false);
-        }
-        else
-        {
-            SetRifleFireLayer(false);
-            SetPistolFireLayer(active);
+            case WeaponType.Rifle:
+                SetRifleFireLayer(active);
+                break;
+
+            case WeaponType.Pistol:
+                SetPistolFireLayer(active);
+                break;
         }
     }
 }

@@ -6,16 +6,17 @@ public abstract class Weapon : MonoBehaviour
 
     private float nextFireTime;
 
-    public abstract void SetFireAnimation(bool active);
+    public abstract WeaponType Type { get; }
 
-    public void TryFire()
+    public bool TryFire()
     {
         if (Time.time < nextFireTime)
-            return;
+            return false;
 
         nextFireTime = Time.time + 1f / fireRate;
 
         Fire();
+        return true;
     }
 
     protected abstract void Fire();

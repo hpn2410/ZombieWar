@@ -2,16 +2,10 @@ using UnityEngine;
 
 public class Rifle : Weapon
 {
+    public override WeaponType Type => WeaponType.Rifle;
+
     protected override void Fire()
     {
-        Debug.Log("fire");
-    }
-
-    public override void SetFireAnimation(bool active)
-    {
-        if (PlayerAnimationHandle.Instance == null)
-            return;
-
-        PlayerAnimationHandle.Instance.SetRifleFireLayer(active);
+        Debug.Log("Rifle Fire");
     }
 }
