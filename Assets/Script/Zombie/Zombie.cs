@@ -5,6 +5,12 @@ public class Zombie : MonoBehaviour, IPoolable
     [SerializeField] private ZombieHealth health;
     [SerializeField] private ZombieAI ai;
     [SerializeField] private ZombieAnimationHandle animationHandle;
+    private PoolMember poolMember;
+
+    private void Awake()
+    {
+        poolMember = GetComponent<PoolMember>();
+    }
 
     public void OnSpawn()
     {
@@ -16,5 +22,10 @@ public class Zombie : MonoBehaviour, IPoolable
     public void OnDespawn()
     {
 
+    }
+
+    public void ReturnToPool()
+    {
+        poolMember.ReturnToPool();
     }
 }

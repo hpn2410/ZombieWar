@@ -1,25 +1,33 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class ZombieHealth : MonoBehaviour
+public class ZombieHealth : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private ZombieData zombieData;
+    [SerializeField] private Slider healthBarSlider;
 
-    private int currentHealth;
+    private float currentHealth;
+    private float maxHealth;
 
     private ZombieAI zombieAI;
 
     private void Awake()
     {
-        currentHealth = maxHealth;
         zombieAI = GetComponent<ZombieAI>();
+        maxHealth = zombieData.zombieHealth;
+        currentHealth = maxHealth;
+        healthBarSlider.value = currentHealth / maxHealth;
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
 
+        healthBarSlider.value = currentHealth / maxHealth;
+
         if (currentHealth <= 0)
         {
+            healthBarSlider.value = 0;
             Die();
         }
     }
@@ -31,6 +39,6 @@ public class ZombieHealth : MonoBehaviour
 
     public void ResetHealth()
     {
-        currentHealth = maxHealth;
+        currentHealth = zombieData.zombieHealth;
     }
 }

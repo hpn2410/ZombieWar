@@ -44,6 +44,8 @@ public class ObjectPool : MonoBehaviour
 
         GameObject obj = pool.Dequeue();
 
+        obj.transform.SetParent(null);
+
         obj.SetActive(true);
 
         if (obj.TryGetComponent(out IPoolable poolable))
@@ -63,6 +65,8 @@ public class ObjectPool : MonoBehaviour
             poolable.OnDespawn();
 
         obj.SetActive(false);
+
+        obj.transform.SetParent(transform);
 
         pool.Enqueue(obj);
     }

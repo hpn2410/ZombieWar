@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class ZombieCombat : MonoBehaviour
 {
-    [SerializeField] private float attackRange = 10f;
-    [SerializeField] private float attackCooldown = 1f;
+    [SerializeField] private ZombieData zombieData;
 
     private float nextAttackTime;
 
     public bool IsPlayerInRange(Transform player)
     {
-        return Vector3.Distance(transform.position, player.position) <= attackRange;
+        return Vector3.Distance(transform.position, player.position) <= zombieData.attackRange;
     }
 
     public void Attack(Transform player)
@@ -17,10 +16,16 @@ public class ZombieCombat : MonoBehaviour
         if (Time.time < nextAttackTime)
             return;
 
-        nextAttackTime = Time.time + attackCooldown;
+        nextAttackTime = Time.time + zombieData.attackCooldown;
 
         Debug.Log("Zombie Attack");
+    }
 
-        // player.GetComponent<PlayerHealth>().TakeDamage(...);
+    public void HitPlayer()
+    {
+        if(IsPlayerInRange(GameObject.FindGameObjectWithTag("Player").transform))
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().TakeDamage(zombieData.zombieDamage);
+        }
     }
 }

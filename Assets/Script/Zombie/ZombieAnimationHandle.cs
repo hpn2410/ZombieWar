@@ -3,10 +3,12 @@ using UnityEngine;
 public class ZombieAnimationHandle : MonoBehaviour
 {
     private Animator animator;
+    private Zombie zombie;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        zombie = GetComponent<Zombie>();
     }
 
     public void PlayWalk()
@@ -27,5 +29,10 @@ public class ZombieAnimationHandle : MonoBehaviour
     public void ResetAnimation()
     {
         animator.SetBool("IsAttack", false);
+    }
+
+    public void OnDeathAnimationFinished()
+    {
+        zombie.ReturnToPool();
     }
 }

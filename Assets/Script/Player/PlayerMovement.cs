@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private PlayerData playerData;
 
     private Rigidbody rb;
     private Vector2 moveVector;
@@ -32,9 +32,9 @@ public class PlayerMovement : MonoBehaviour
         );
 
         rb.linearVelocity = new Vector3(
-            movement.x * moveSpeed,
+            movement.x * playerData.moveSpeed,
             rb.linearVelocity.y,
-            movement.z * moveSpeed
+            movement.z * playerData.moveSpeed
         );
 
         HandleAnimation(movement);
