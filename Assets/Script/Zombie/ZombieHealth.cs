@@ -16,20 +16,29 @@ public class ZombieHealth : MonoBehaviour, IDamageable
         zombieAI = GetComponent<ZombieAI>();
         maxHealth = zombieData.zombieHealth;
         currentHealth = maxHealth;
-        healthBarSlider.value = currentHealth / maxHealth;
+    }
+
+    private void Start()
+    {
+        UpdateHealthBar();
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
 
-        healthBarSlider.value = currentHealth / maxHealth;
-
         if (currentHealth <= 0)
         {
-            healthBarSlider.value = 0;
+            //healthBarSlider.value = 0;
             Die();
         }
+
+        UpdateHealthBar();
+    }
+
+    private void UpdateHealthBar()
+    {
+        healthBarSlider.value = currentHealth / maxHealth;
     }
 
     private void Die()
@@ -40,5 +49,6 @@ public class ZombieHealth : MonoBehaviour, IDamageable
     public void ResetHealth()
     {
         currentHealth = zombieData.zombieHealth;
+        UpdateHealthBar();
     }
 }

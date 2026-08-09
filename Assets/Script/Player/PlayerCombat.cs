@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private PlayerAnimationHandle animationHandle;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Button switchWeaponButton;
 
     private bool isFiring;
     private Vector2 fireScreenPosition;
@@ -15,6 +17,18 @@ public class PlayerCombat : MonoBehaviour
     {
         if (mainCamera == null)
             mainCamera = Camera.main;
+
+        if (switchWeaponButton != null)
+        {
+            switchWeaponButton.onClick.AddListener(OnSwitchWeaponClicked);
+        }
+    }
+    private void OnDestroy()
+    {
+        if (switchWeaponButton != null)
+        {
+            switchWeaponButton.onClick.RemoveListener(OnSwitchWeaponClicked);
+        }
     }
 
     private void Update()

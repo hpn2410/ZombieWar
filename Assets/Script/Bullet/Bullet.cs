@@ -45,17 +45,22 @@ public class Bullet : MonoBehaviour, IPoolable
 
     private void OnTriggerEnter(Collider other)
     {
-        IDamageable damageable =
-            other.GetComponent<IDamageable>();
+        IDamageable damageable = other.GetComponent<IDamageable>();
+        ZombieEffect zombieEffect = other.GetComponent<ZombieEffect>();
 
         if (damageable == null)
         {
             damageable = other.GetComponentInParent<IDamageable>();
         }
 
-        if (damageable != null)
+        if (damageable != null && !other.CompareTag("Player"))
         {
             damageable.TakeDamage(weaponData.damage);
+        }
+
+        if(zombieEffect != null)
+        {
+            zombieEffect.PlayHitEffect();
         }
 
         poolMember.ReturnToPool();

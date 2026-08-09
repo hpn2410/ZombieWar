@@ -5,6 +5,7 @@ public abstract class Weapon : MonoBehaviour
     [SerializeField] protected WeaponData weaponData;
     [SerializeField] protected Transform firePoint;
     [SerializeField] protected ObjectPool bulletPool;
+    [SerializeField] protected WeaponVFX weaponVFX;
 
     private float nextFireTime;
 
@@ -36,5 +37,10 @@ public abstract class Weapon : MonoBehaviour
         Bullet bullet = bulletObject.GetComponent<Bullet>();
 
         bullet.Initialize(weaponData, firePoint.forward);
+    }
+
+    protected void PlayFireVFX()
+    {
+        weaponVFX.PlayFireVFX();
     }
 }

@@ -17,15 +17,16 @@ public class ZombieCombat : MonoBehaviour
             return;
 
         nextAttackTime = Time.time + zombieData.attackCooldown;
-
-        Debug.Log("Zombie Attack");
     }
 
     public void HitPlayer()
     {
-        if(IsPlayerInRange(GameObject.FindGameObjectWithTag("Player").transform))
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (IsPlayerInRange(player.transform))
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>().TakeDamage(zombieData.zombieDamage);
+            player.GetComponent<PlayerHealth>().TakeDamage(zombieData.zombieDamage);
+            player.GetComponent<PlayerEffect>().PlayHitEffect();
         }
     }
 }

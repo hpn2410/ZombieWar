@@ -13,24 +13,34 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         maxHealth = playerData.health;
         currentHealth = maxHealth;
-        healthBarSlider.value = currentHealth / maxHealth;
+    }
+
+    private void Start()
+    {
+        UpdateHealthBar();
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
 
-        healthBarSlider.value = currentHealth / maxHealth;
-
         if (currentHealth <= 0)
         {
-            healthBarSlider.value = 0;
             Die();
         }
+
+        UpdateHealthBar();
+    }
+
+    public void UpdateHealthBar()
+    {
+        float value = currentHealth / maxHealth;
+            
+        healthBarSlider.value = value;
     }
 
     private void Die()
     {
-        // game over
+
     }
 }

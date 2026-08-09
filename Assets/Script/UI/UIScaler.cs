@@ -48,7 +48,6 @@ public class UIScaler : MonoBehaviour
             m_canvasScaler.matchWidthOrHeight = 0;
         }
 
-        Debug.Log($"[UIScaler] Adjust Scaler ratio = {ratio}  width = {Screen.width}  height = {Screen.height}  MatchWidthOrHeight = {m_canvasScaler.matchWidthOrHeight}");
     }
 
     public void AdjustCamera()
