@@ -34,6 +34,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         {
             Die();
             isDead = true;
+            healthBarSlider.value = 0;
         }
         
         playerEffect.PlayHitEffect();
@@ -50,6 +51,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private void Die()
     {
-
+        Debug.Log("Lose!");
+        UnityEditor.EditorApplication.isPlaying = false;
+        Application.Quit();
     }
 }

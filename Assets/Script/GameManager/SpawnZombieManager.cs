@@ -7,7 +7,7 @@ public class SpawnZombieManager : MonoBehaviour
     [SerializeField] private Transform player;
 
     [Header("Spawn Settings")]
-    [SerializeField] private float spawnInterval = 2f;
+    [SerializeField] private float spawnInterval = 5f;
     [SerializeField] private float spawnRadius = 12f;
 
     private float timer;

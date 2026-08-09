@@ -37,6 +37,7 @@ public class ZombieHealth : MonoBehaviour, IDamageable
         {
             Die();
             isDead = true;
+            healthBarSlider.value = 0;
         }
         zombieEffect.PlayHitEffect();
         UpdateHealthBar();

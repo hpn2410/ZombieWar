@@ -58,11 +58,6 @@ public class Bullet : MonoBehaviour, IPoolable
             damageable.TakeDamage(weaponData.damage);
         }
 
-        //if(zombieEffect != null)
-        //{
-        //    zombieEffect.PlayHitEffect();
-        //}
-
         poolMember.ReturnToPool();
     }
 }
