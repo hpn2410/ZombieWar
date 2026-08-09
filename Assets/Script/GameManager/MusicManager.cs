@@ -5,7 +5,9 @@ public class MusicManager : MonoBehaviour
     public static MusicManager Instance { get; private set; }
 
     [Header("Audio")]
-    public AudioSource musicSource;
+    public AudioSource BackGroundAudio;
+    public AudioSource LevelBgAudio;
+    public AudioSource FireAudio;
 
     private void Awake()
     {
@@ -21,7 +23,12 @@ public class MusicManager : MonoBehaviour
 
     public void PlaySound(AudioSource soundToPlay)
     {
-        if (!soundToPlay.isPlaying)
-            soundToPlay.Play();
+        soundToPlay.Play();
+    }
+
+    public void StopSound(AudioSource soundToStop)
+    {
+        if (soundToStop.isPlaying)
+            soundToStop.Stop();
     }
 }

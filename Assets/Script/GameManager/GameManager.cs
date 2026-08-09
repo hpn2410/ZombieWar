@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         StartLevel();
+        MusicManager.Instance.PlaySound(MusicManager.Instance.LevelBgAudio);
     }
 
     private void Update()

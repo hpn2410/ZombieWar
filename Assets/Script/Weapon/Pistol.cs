@@ -6,5 +6,6 @@ public class Pistol : Weapon
     {
         SpawnBullet();
         PlayFireVFX();
+        MusicManager.Instance.PlaySound(MusicManager.Instance.FireAudio);
     }
 }
