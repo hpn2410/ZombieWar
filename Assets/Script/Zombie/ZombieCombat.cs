@@ -26,7 +26,7 @@ public class ZombieCombat : MonoBehaviour
         if (IsPlayerInRange(player.transform))
         {
             player.GetComponent<PlayerHealth>().TakeDamage(zombieData.zombieDamage);
-            player.GetComponent<PlayerEffect>().PlayHitEffect();
+            //player.GetComponent<PlayerEffect>().PlayHitEffect();
         }
     }
 }
