@@ -40,23 +40,25 @@ public class ZombieHealth : MonoBehaviour, IDamageable
             healthBarSlider.value = 0;
         }
         zombieEffect.PlayHitEffect();
+        MusicManager.Instance.PlaySound(MusicManager.Instance.ZombiePain);
         UpdateHealthBar();
     }
 
     private void UpdateHealthBar()
     {
-        Debug.Log("Zombie current health: " + currentHealth);
         healthBarSlider.value = currentHealth / maxHealth;
     }
 
     private void Die()
     {
         zombieAI.ChangeState(ZombieState.Dead);
+        MusicManager.Instance.PlaySound(MusicManager.Instance.ZombieDeath);
     }
 
     public void ResetHealth()
     {
         currentHealth = zombieData.zombieHealth;
         UpdateHealthBar();
+        isDead = false;
     }
 }

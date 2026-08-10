@@ -16500,7 +16500,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204286661}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -19728,7 +19728,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1424855138}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -22811,7 +22811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 403370263730251747, guid: 5407bf783ce8b0843ae5e4b371521396, type: 3}
-  initialSize: 30
+  initialSize: 20
 --- !u!114 &1555323712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22826,7 +22826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombiePool: {fileID: 1555323711}
   player: {fileID: 543450653212296229}
-  spawnInterval: 5
+  spawnInterval: 3
   spawnRadius: 12
 --- !u!114 &1555323713
 MonoBehaviour:
@@ -24184,7 +24184,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655469602}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -27376,7 +27376,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1847287853}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -30260,7 +30260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb6e5b97601d4c449d061c77a26e17d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelDuration: 20
+  levelDuration: 180
 --- !u!1 &2029933682
 GameObject:
   m_ObjectHideFlags: 0

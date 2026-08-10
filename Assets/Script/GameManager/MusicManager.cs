@@ -8,6 +8,10 @@ public class MusicManager : MonoBehaviour
     public AudioSource BackGroundAudio;
     public AudioSource LevelBgAudio;
     public AudioSource FireAudio;
+    public AudioSource PlayerPain;
+    public AudioSource ZombiePain;
+    public AudioSource ZombieDeath;
+    public AudioSource BombExplose;
 
     private void Awake()
     {

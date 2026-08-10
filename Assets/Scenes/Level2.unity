@@ -31976,7 +31976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 403370263730251747, guid: 43c6bb789fb487f4795d807222e446ac, type: 3}
-  initialSize: 20
+  initialSize: 30
 --- !u!114 &2090475641
 MonoBehaviour:
   m_ObjectHideFlags: 0

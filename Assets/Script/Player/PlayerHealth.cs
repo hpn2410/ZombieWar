@@ -38,7 +38,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         }
         
         playerEffect.PlayHitEffect();
-        
+        MusicManager.Instance.PlaySound(MusicManager.Instance.PlayerPain);
         UpdateHealthBar();
     }
 

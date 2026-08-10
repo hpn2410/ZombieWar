@@ -37,6 +37,7 @@ public class Bomb : MonoBehaviour, IPoolable
     {
         DealDamage();
         PlayBombVFX();
+        MusicManager.Instance.PlaySound(MusicManager.Instance.BombExplose);
 
         poolMember.ReturnToPool();
     }
