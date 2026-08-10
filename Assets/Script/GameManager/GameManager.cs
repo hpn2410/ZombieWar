@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
         else if (currentScene == 2)
         {
             Debug.Log("Victory!");
-            UnityEditor.EditorApplication.isPlaying = false;
+            //UnityEditor.EditorApplication.isPlaying = false;
             Application.Quit();
         }
     }

@@ -52,7 +52,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private void Die()
     {
         Debug.Log("Lose!");
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
     }
 }
